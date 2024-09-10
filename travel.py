@@ -8,6 +8,7 @@ def getNumberofPeople():
 
 def getTravelmethod():
     travelMethod= input("What method of travel do you use?")
+    destination=[]
     return travelMethod
 
 def print_travel_details(destination, numberOfpeople, travelMethod):
@@ -19,6 +20,6 @@ while destination != "END":
     numberOfpeople=getNumberofPeople()
     travelMethod=getTravelmethod()
 
-    print( "Your destination is" + destination + "and you plan on getting there by "+ travelMethod + "with " + numberOfpeople + "people")
+    print( "Your destination is " + destination + " and you plan on getting there by "+ travelMethod + " with " + numberOfpeople + "people")
     destination=get_destination()   
 print("Bye")
