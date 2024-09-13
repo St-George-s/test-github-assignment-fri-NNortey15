@@ -1,14 +1,14 @@
 import csv
 
 class Country:
-    def __init__ (self, rank , countryname , countryCode ,gold,silver,bronze,total):
+    def __init__ (self, rank , countryName , countryCode ,gold,silver,bronze,total):
         self.rank= rank
-        self.countryname= countryname
+        self.countryName= countryName
         self.countryCode= countryCode
         self.gold= gold
         self.silver= silver
         self.bronze= bronze
-        self.silver.total= total
+        self.total= total
 
 def loadingCsvFile():
     filename="Starter act/olympics2024.csv"
@@ -21,28 +21,49 @@ def loadingCsvFile():
                 row[0],
                 row[1],
                 row[2],
-                row[3],
-                row[4],
-                row[5],
-                row[6]
+                int(row[3]),
+                int(row[4]),
+                int(row[5]),
+                int(row[6])
             )
             countries.append(newRecord)
             
     return countries
 
 
-def medalCalcuclation(athletes):
-   pass
+def medalCalcuclation(countries):
+   total=0
+   for country in countries:
+    total = total + country.total
+    
+    print(total)
+       
 
-def topCountryIdentification():
-    pass
+def topCountryIdentification(countries):
+    max = countries[0]
 
-def goldMedalreport(athletes):
-    pass
+    for index in range(1, len(countries)):
+        if countries[index].total >= max.total:
+            max = countries[index]
+    print(max.countryName)
+
+def goldMedalreport(countries):
+  with open('countries.txt', 'w') as file: 
+      for country in countries:
+         if country.gold > 30:
+            file.write(str(country.gold) )
+            file.write(country.countryName + "\n")
+     
+
+
+    
+   
 
 #main program
- 
-athletes = loadingCsvFile()
-medalCalcuclation(athletes)
-topCountryIdentification()
-goldMedalreport()
+countries = loadingCsvFile()
+# medalCalcuclation(countries)
+# topCountryIdentification(countries)
+goldMedalreport(countries)
+
+
+

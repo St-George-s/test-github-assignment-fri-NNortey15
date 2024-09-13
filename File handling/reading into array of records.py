@@ -23,4 +23,3 @@ def getQualifyingData():
 
 # Main
 students = getQualifyingData()
-print(students[3].grades)
