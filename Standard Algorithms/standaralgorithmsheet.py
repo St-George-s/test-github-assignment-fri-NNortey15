@@ -21,3 +21,23 @@ def find_min(myArray):
     print(min)
 
 find_min(times_spent)
+
+def linear_search(myArray, target):
+    found = False
+    for index in myArray:
+        if index == target:
+            found = True
+            
+    if found:
+        print( target , " is found in the array.")
+    else: 
+        print( target , " is not found in the array.")
+
+def count_occurrences(myArray, item_to_find):
+    number_found = 0
+
+    for index in myArray:
+        if index == item_to_find:
+            number_found += 1
+
+    print("There were", number_found, "occurrences of", item_to_find, "in the list") 
