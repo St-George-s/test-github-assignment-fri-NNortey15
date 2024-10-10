@@ -1,5 +1,6 @@
 import csv
 
+#array of records 
 class Country:
     def __init__ (self, rank , countryName , countryCode ,gold,silver,bronze,total):
         self.rank= rank
@@ -55,9 +56,6 @@ def goldMedalreport(countries):
             file.write(country.countryName + "\n")
      
 
-
-    
-   
 
 #main program
 countries = loadingCsvFile()

@@ -1,4 +1,5 @@
 def get_destination():
+    #Variable asking user to store their destination 
     destination= input("Enter the travel destination (type 'END' to stop): ")
     return destination 
 

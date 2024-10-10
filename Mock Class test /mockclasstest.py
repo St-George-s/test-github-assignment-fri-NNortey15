@@ -22,7 +22,7 @@ def readOrdersfromCSV():
         # Loop over each row in the file treating each row as an array
         for row in reader:
             # Create an instance (copy) of the record Order for the current row
-            newOrder = Order(row[0],row[1],row[2])
+            newOrder = Order(row[0],row[1],row[2],row[3]row[4])
             # Add the new record to the end of the array orders
             orders.append(newOrders)
 
