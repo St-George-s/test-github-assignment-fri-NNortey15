@@ -4,6 +4,7 @@ import csv
 gamesTitles=[]
 genre=[]
 ageRatings =[]
+platform =[]
 
 
 def readGameDataFromCSV():
@@ -15,9 +16,9 @@ def readGameDataFromCSV():
             gamesTitles.append(row[0])
             genre.append(row[1])
             ageRatings.append(row[2])
+            platform.append(row[3])
 
-
-    return gamesTitles, genre, ageRatings
+    return gamesTitles, genre, ageRatings,platform 
  #check genre positon
 genre_to_check = genre[0]
 
@@ -28,7 +29,14 @@ def countSuitableGames(genre_to_check,gameTitles,genre ,ageRatings ):
                   print (gamesTitles[index])
                   counter = counter + 1 
 
-             
+#finding specfic genre that has games under the age of 18             
+def findgamesSpeficgenre(gamesTitles,genre,ageRatings,Platform):
+    with open('Platform_suitable_games.txt', 'w') as file:
+        for index in range(len(gamesTitles)):
+
+            if genre[index] == "Horror" , "Sci-Fi" , "Fanatsy" and ageRatings < int(18):
+                #write the game titles and genre and platform to the file  
+                    file.write(gamesTitles[index],genre[index] + "-" + platform[index]+ '\n')
 
 
  
@@ -37,3 +45,4 @@ def countSuitableGames(genre_to_check,gameTitles,genre ,ageRatings ):
 
 readGameDataFromCSV()
 countSuitableGames(gamesTitles)
+findgamesSpeficgenre(gamesTitles,genre,ageRatings,platform)
