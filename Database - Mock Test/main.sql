@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- SELECT eventname,name, maxAttendees, eventDate
 -- FROM Shop S,Event E
 -- Where S.shopid =E.shopid;
@@ -28,3 +29,5 @@ GROUP BY name;
 =======
 DESCRIBE ALL TABLES;
 >>>>>>> 6c99ea2 (Mock DB Test)
+=======
+>>>>>>> a8ee91c (Added Class Test)
