@@ -8,9 +8,6 @@ class Sightings:
         self.date = date
         self.age = int(age)  
 
-# Function to ensure input starts with an uppercase character
-
-
 # Read sightings from a CSV file
 def readOrdersfromCSV():
     # Array for storing list of sighting records
@@ -41,13 +38,26 @@ def findMaxAge(sightings):
     print("The oldest walker is " + str(max_sighting.age) + " years old.")
 
 # Find and display the dates of sightings of a chosen mammal in a particular town
-def displayDates(sightings, chosenTown, chosenMammal):
-    print("The dates of sightings were:")
+def displayDates(sightings):
+    chosenTown = input("Enter the town: ")
+    chosenMammal = input("Enter the mammal:")
+    chosenTown =uppercase(chosenTown)
+    chosenMammal = uppercase(chosenMammal)
 
-    # Filter records matching the chosen town and mammal
+    #  records matching the chosen town and mammal
     for sighting in sightings:
         if sighting.town == chosenTown and sighting.mammal == chosenMammal:
             print(sighting.date)
+
+# Function to ensure input starts with an uppercase character
+
+def uppercase(word):
+    firstChar = ord(word[0])
+    if firstChar >= 97 and firstChar <= 122 :
+        firstChar = firstChar - 32 
+        word = chr(firstChar) + word[1:]
+    return word
+#    return (word[0].upper() + word[1:])
 
 # Count and display the number of sightings for each date
 def countAndDisplayNumOfSightings(sightings):
@@ -66,16 +76,15 @@ def countAndDisplayNumOfSightings(sightings):
     print(dayToCount + ": " + str(count) + " sightings")
 
 # Main program
-# Run the program
+
 sightings = readOrdersfromCSV()
 
 # Find and display the age of the oldest walker
 findMaxAge(sightings)
 
 # Display the dates of sightings for a chosen mammal and town
-chosenTown = input("Enter the town: ")
-chosenMammal = input("Enter the mammal: ")
-displayDates(sightings, chosenTown, chosenMammal)
+displayDates(sightings)
 
 # Count and display the number of sightings for each date
 countAndDisplayNumOfSightings(sightings)
+
