@@ -20,8 +20,7 @@ DESCRIBE ALL TABLES;
 -- GROUP BY W.telNo
 -- ORDER BY W.walkerNo ASC;
 
-SELECT Route.routeID, woodName, description
-FROM Route
-WHERE footwear = "Trail shoes"
-OR footwear = "Waterproof shoes"
-OR footwear = "Walking shoes";
+SELECT R.routeID, woodName, description
+FROM Route R
+WHERE footwear LIKE '%shoes'
+GROUP BY R.routeID, woodName, description;
