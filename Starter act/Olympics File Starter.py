@@ -59,8 +59,8 @@ def goldMedalreport(countries):
 
 #main program
 countries = loadingCsvFile()
-# medalCalcuclation(countries)
-# topCountryIdentification(countries)
+medalCalcuclation(countries)
+topCountryIdentification(countries)
 goldMedalreport(countries)
 
 
