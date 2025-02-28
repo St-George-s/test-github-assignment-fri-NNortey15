@@ -34,6 +34,3 @@ print("The furthest distance walked is: " + str(furthest))
 # Write club prize winners to file
 # Open results.txt file
 with open('results.txt', 'w') as file:
-#Find the position of the customer who gave the first 5-star rating in a given month.
-#def customerPosition(Orders):
-
