@@ -26,53 +26,6 @@ def readOrdersfromCSV():
     return orders
 
 
-# def customerPosition(orders, UsersChosenMonth):
-#     position = -1  # Default to -1
-#     index = 0
-#     # Loop through all orders and find the one with the given month and 5-star rating
-#     while position == -1 and index == 0 < len(orders):
-#         if orders[index].date[3:5] == UsersChosenMonth and orders[index].rating == 5:
-#             position = index  # Set the position when a valid order is found
-#         index += 1
-#     return position
-
-
-# #Opens a new file and writes the winning customer details or 'No winner' if no winner is found.
-# def openNewFile(orders, UsersChosenMonth):
-#       # Get the winning customer's position
-#     with open("winningCustomer.txt", 'w') as file:  # Open file to write the results
-#         if position >= 0:
-#             # Write the winning order details to the file
-#             winning_order = orders[position]
-#             file.write(winning_order.orderNum + " " + winning_order.email + " " + str(winning_order.cost) + "\n")
-#         else:
-#             file.write("No winner\n")  # If no winner is found, write 'No winner'
-
-
-# def countOption(orders):
-#     #Counts the number of orders that match a specific option 
-#     count = 0
-#     for order in orders:
-#         if order.option() == order.option.lower():
-#             count =+ 1
-            
-#     return count 
-
-
-# # Main execution
-# orders = readOrdersfromCSV()  # Read the orders from the CSV file
-# UsersChosenMonth = input("Enter month to search for: ")  # Get the month input from the user
-# openNewFile(orders, UsersChosenMonth)  # Write the result to the file
-
-# # Count and display the number of orders for "delivered" and "collected"
-# deliveredCount = countOption(orders, "delivered")
-# collectedCount = countOption(orders, "collected")
-# print("Total number of orders delivered: " + str(deliveredCount))
-# print("Total number of orders collected: " + str(collectedCount))
-
-
-
-
 def customerPosition(orders):
     #Set position to -1
     position = -1  
@@ -83,30 +36,41 @@ def customerPosition(orders):
     # Loop through all orders and find the one with the given month and 5-star rating
     while position == -1 and index < len(orders):
     #If current month is equal to searched month and current rating is 5 then
-        if orders[index].date[3:5] == UsersChosenMonth and orders[index].rating == 5:
+        if orders[index].date[3:6] == UsersChosenMonth and orders[index].rating == 5:
     #Set position to index
             position = index  
             #Add 1 to index
             index += 1
-            #Return positiom
+            #Return position
             return position
             
 
-def openNewFile(orders, index):
+def openNewFile(orders, position):
 #Open new file ‘winningCustomer.txt’
-    with open("winningCustomer.txt", 'w') as file: 
+    file = open("winningCustomer.txt", 'w')
 # If position is 0 or above then
-        if index >= 0:
-#Write winning order number, email and cost to ‘winningCustomer.txt’
-            file.write(orders.orderNum + " " + orders.email + " " + str(orders.cost) + "\n")
-#    Else
-        else:
-#        Write ‘No winner’ to ‘winningCustomer.txt’
-            file.write("No winner\n")    
-#    End if
-#Close ‘winningCustomer.txt
+    if position >= 0:
+    #Write winning order number, email and cost to ‘winningCustomer.txt’
+                file.write(orders.orderNum + " " + orders.email + " " + str(orders.cost) + "\n")
+    #    Else
+    else:
+    #        Write ‘No winner’ to ‘winningCustomer.txt’
+                file.write("No winner\n")    
+    #    End if
+    #Close ‘winningCustomer.txt
+
 
 def countOption(orders):
+    #Counts the number of orders that match a specific option 
+    count = 0
+    for order in orders:
+        if order.option() == order.option.lower():
+            count =+ 1
+            
+    return count 
+
+
+def totalNumOfOrders(orders):
 #Call countOption function to return the number of orders delivered
     deliveredCount = countOption(orders.option, "Delivery")
     #Call countOption function to return the number of orders collected
@@ -117,7 +81,9 @@ def countOption(orders):
     print("Total number of orders collected: " + str(collectedCount))
 
 # Main execution
-orders = readOrdersfromCSV()
-openNewFile(orders, index) 
-countOption(orders) 
 
+orders = readOrdersfromCSV()
+position = customerPosition(orders)
+openNewFile(orders, position) 
+countOption(orders) 
+totalNumOfOrders(orders)
